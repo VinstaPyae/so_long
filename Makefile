@@ -21,16 +21,16 @@ SRCS = main.c
 SRC = $(addprefix ./src/,$(SRCS))
 OBJ = $(SRC:.c=.o)
 
-all: $(LIBFT) $(NAME)
+all: $(NAME) $(LIBFT)
 
-$(LIBFT):
-	@make -s -C $(LIBFT_DIR)
-
-$(NAME): $(LIBFT) $(OBJ)
+$(NAME): $(OBJ) $(LIBFT)
 	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME) -L$(LIBFT_DIR) -lft
 
 %.o: %.c
 	@$(CC) $(CFLAGS) -c $< -o $@ -I$(LIBFT_DIR)
+
+$(LIBFT):
+	@make -s -C $(LIBFT_DIR)
 
 clean:
 	@$(RM) $(OBJ)

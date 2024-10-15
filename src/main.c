@@ -12,12 +12,45 @@
 
 #include "so_long.h"
 
-int	main(int argc, char *argv[])
+void	init(int ac, char **av, t_mpp *mp_info)
 {
-	if (argc == 2)
+	mp_info->ac = ac;
+	mp_info->av = av;
+	mp_info->fd_mp = open(mp_info->av[1], O_RDONLY);
+}
+
+void	ft_error(void)
+{
+	perror("\033[1;31m🛑ERROR:\033[0m");
+	exit(1);
+}
+
+int	file_validation(t_mpp *mp_info)
+{
+	char *file_ext;
+
+	file_ext = ft_strrchr(mp_info->av[1], '.');
+	if (!file_ext || ft_strncmp(file_ext, ".ber", 5))
 	{
-		printf("have map");
+		ft_error();
 	}
 	else
-		ft_putstr_fd("Error: Map\n", 1);
+	{
+		if (mp_info->fd_mp < 0)
+			ft_error();
+	}
+	return (mp_info->fd_mp);
+}
+
+int	main(int argc, char **argv)
+{
+	t_mpp mp_info;
+
+	if (argc == 2)
+	{
+		init(argc, argv, &mp_info);
+		file_validation(&mp_info);
+	}
+	else
+		ft_putstr_fd("\033[1;31m🛑Error:\033[0m No Map\n", 1);
 }

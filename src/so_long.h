@@ -17,4 +17,12 @@
 # include <stdio.h>
 # include "../libft/libft.h"
 
+typedef struct s_mpp
+{
+	char	**av;
+	int		ac;
+	int		fd_mp;
+}		t_mpp;
+
+
 #endif
