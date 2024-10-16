@@ -6,7 +6,7 @@
 /*   By: pzaw <pzaw@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 20:28:18 by pzaw              #+#    #+#             */
-/*   Updated: 2024/10/16 19:03:50 by pzaw             ###   ########.fr       */
+/*   Updated: 2024/10/16 21:38:40 by pzaw             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,13 @@
 
 # include <unistd.h>
 # include <stdio.h>
+# include <stdlib.h>
 # include "../libft/libft.h"
 
 typedef struct s_mpp
 {
-	char	*mp_file;
+	char	**map;
 	char	buff[BUFFER_SIZE + 1];
-	char	**av;
-	int		ac;
 	int		fd_mp;
 }		t_mpp;
 

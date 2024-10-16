@@ -6,7 +6,7 @@
 /*   By: pzaw <pzaw@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 16:50:13 by pzaw              #+#    #+#             */
-/*   Updated: 2024/10/16 19:00:16 by pzaw             ###   ########.fr       */
+/*   Updated: 2024/10/16 21:36:24 by pzaw             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,36 +14,21 @@
 
 void	map_init(t_mpp *mp_info)
 {
-	char	*tmp;
 	int	byt_rd;
+	int	i;
 	
-	mp_info->mp_file = ft_calloc(1,1);
-	if (mp_info->mp_file == 0)
-	{
-		close(mp_info->fd_mp);
-		ft_error();
-	}
+	i = -1;
 	byt_rd = read(mp_info->fd_mp, mp_info->buff, BUFFER_SIZE);
-	while (byt_rd > 0)
-	{
-		mp_info->buff[byt_rd] = '\0';
-		tmp = ft_calloc(ft_strlen(mp_info->mp_file) + byt_rd + 1, 1);
-		if (tmp == NULL)
-		{
-			free(mp_info->mp_file);
-			close(mp_info->fd_mp);
-			ft_error();
-		}
-		ft_strlcpy(tmp, mp_info->mp_file, ft_strlen(mp_info->mp_file));
-		ft_strlcat(tmp, mp_info->buff, ft_strlen(mp_info->buff));
-		free(mp_info->mp_file);
-		mp_info->mp_file = tmp;
-	}
 	if (byt_rd < 0)
 	{
-		free(mp_info->mp_file);
+		free(mp_info->buff);
 		close(mp_info->fd_mp);
 		ft_error();
+	}
+	mp_info->map = ft_split(mp_info->buff, '\n');
+	while (mp_info->map[++i])
+	{
+		printf("%s\n", mp_info->map[i]);
 	}
 	close(mp_info->fd_mp);
 }
