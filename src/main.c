@@ -6,18 +6,11 @@
 /*   By: pzaw <pzaw@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 21:13:57 by pzaw              #+#    #+#             */
-/*   Updated: 2024/10/15 21:37:08 by pzaw             ###   ########.fr       */
+/*   Updated: 2024/10/16 19:44:09 by pzaw             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	init(int ac, char **av, t_mpp *mp_info)
-{
-	mp_info->ac = ac;
-	mp_info->av = av;
-	mp_info->fd_mp = open(mp_info->av[1], O_RDONLY);
-}
 
 void	ft_error(void)
 {
@@ -25,21 +18,23 @@ void	ft_error(void)
 	exit(1);
 }
 
-int	file_validation(t_mpp *mp_info)
+void	file_validation(t_mpp *mp_info, char **av)
 {
 	char *file_ext;
 
-	file_ext = ft_strrchr(mp_info->av[1], '.');
+	file_ext = ft_strrchr(av[1], '.');
 	if (!file_ext || ft_strncmp(file_ext, ".ber", 5))
 	{
+		printf("map incorrect");
 		ft_error();
 	}
-	else
+	mp_info->fd_mp = open(mp_info->av[1], O_RDONLY);
+	if (mp_info->fd_mp < 0)
 	{
-		if (mp_info->fd_mp < 0)
-			ft_error();
+		printf("map incorrect %d", mp_info->fd_mp);
+		ft_error();
 	}
-	return (mp_info->fd_mp);
+	map_init(mp_info);
 }
 
 int	main(int argc, char **argv)
@@ -48,9 +43,9 @@ int	main(int argc, char **argv)
 
 	if (argc == 2)
 	{
-		init(argc, argv, &mp_info);
-		file_validation(&mp_info);
+		file_validation(&mp_info, argv);
+		
 	}
 	else
-		ft_putstr_fd("\033[1;31m🛑Error:\033[0m No Map\n", 1);
+		ft_putstr_fd("\033[1;31m🛑Error:\033[0mNO MAP\n", 1);
 }

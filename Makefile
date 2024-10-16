@@ -17,7 +17,7 @@ CFLAGS = -Wall -Wextra -Werror -g
 LIBFT_DIR = libft
 LIBFT = ./libft/libft.a
 RM = rm -rf
-SRCS = main.c
+SRCS = main.c map_init.c
 SRC = $(addprefix ./src/,$(SRCS))
 OBJ = $(SRC:.c=.o)
 
