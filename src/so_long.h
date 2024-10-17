@@ -6,7 +6,7 @@
 /*   By: pzaw <pzaw@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 20:28:18 by pzaw              #+#    #+#             */
-/*   Updated: 2024/10/16 21:38:40 by pzaw             ###   ########.fr       */
+/*   Updated: 2024/10/17 16:58:31 by pzaw             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,20 @@
 
 typedef struct s_mpp
 {
-	char	**map;
+	char	**map_file;
 	char	buff[BUFFER_SIZE + 1];
 	int		fd_mp;
+	int		width;
+	int		height;
+	int		collectibles;
+	int		player;
+	int		walls;
+	int		exit;
+	int		path;
 }		t_mpp;
 
-void	map_init(t_mpp *mp_info);
-void	ft_error(void);
+void	put_map(t_mpp *mp_info, char **argv);
+void	fd_error(void);
+void	ft_free_mem(char **tab);
 
 #endif
