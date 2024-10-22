@@ -25,7 +25,7 @@
 typedef struct s_mpp
 {
 	char	**map_file;
-	char	buff[BUFFER_SIZE + 1];
+	char		*buff;
 	int		fd_mp;
 	int		width;
 	int		height;
