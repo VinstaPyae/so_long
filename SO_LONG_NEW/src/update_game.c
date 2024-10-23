@@ -27,6 +27,7 @@ void	if_touchable_tiles(t_game *game)
 		quit_game(game);
 	}
 }
+
 void	update_map(t_game *game)
 {
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->tiles.floor,
@@ -53,7 +54,7 @@ void	update_player_pos(t_game *game, bool horizontal, int length)
 			[game->map.player_pos.x] == '1')
 			return ;
 		if (game->map.map[game->map.player_pos.y + length]
-		[game->map.player_pos.x] == 'E' && game->map.collectibles != 0)
+			[game->map.player_pos.x] == 'E' && game->map.collectibles != 0)
 			return ;
 		update_map(game);
 		game->map.player_pos.y += length;

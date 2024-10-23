@@ -2,13 +2,14 @@
 
 int	file_validation(char *mp_file)
 {
-	char *file_ext;
+	char	*file_ext;
 
 	file_ext = ft_strrchr(mp_file, '.');
 	if (!file_ext || ft_strncmp(file_ext, ".ber", 5))
 		return (0);
 	return (1);
 }
+
 int	is_rectangular(t_game *game)
 {
 	int	i;

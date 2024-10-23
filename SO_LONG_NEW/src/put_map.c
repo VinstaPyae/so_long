@@ -35,7 +35,6 @@ void	get_wnh(t_game *game)
 	while (game->map.map[i])
 		i++;
 	game->map.height = i;
-	printf("width: %d", game->map.width);
 }
 
 void	get_elements(t_game *game)

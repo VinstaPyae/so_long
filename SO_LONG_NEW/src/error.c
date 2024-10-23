@@ -5,7 +5,7 @@ void	ft_free_mem(char **tab)
 	size_t	i;
 
 	if (!tab)
-		return;
+		return ;
 	i = 0;
 	while (tab[i])
 	{

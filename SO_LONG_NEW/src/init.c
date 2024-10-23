@@ -42,6 +42,7 @@ void	init_mlx(t_game *game)
 	if (!game->win_ptr)
 		error_exit(game, "Failed to open window!\n");
 }
+
 void	init_xpm(t_game *game)
 {
 	int	t;
