@@ -61,7 +61,7 @@ void	is_surrounded_wall(t_game *game)
 		while (x++ < (game->map.width - 1))
 			if (game->map.map[0][x - 1] != '1')
 				error_exit(game, "Map is not surrounded by wall!!\n");
-		if (game->map.map[y][0] != '1' || game->map.map[y][x - 2] != '1')
+		if (game->map.map[y][0] != '1' || game->map.map[y][x - 1] != '1')
 			error_exit(game, "Map is not surrounded by wall!!\n");
 		y++;
 	}
