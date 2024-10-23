@@ -10,7 +10,9 @@ int	main(int argc, char **argv)
 		init_checker(&game);
 		put_map(argv[1], &game);
 		check_map_playable(&game);
-		error_exit(&game, "Game Success!");
+		init_mlx(&game);
+		render_map(&game);
+		key_hook(&game);
 	}
 	else
 		error_exit(&game, "Map not found!!\n");
