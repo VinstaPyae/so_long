@@ -17,7 +17,7 @@ void	render_tiles(t_game *game)
 	while (++y < game->map.height)
 	{
 		x = -1;
-		while (++x < (game->map.width - 1))
+		while (++x < (game->map.width))
 		{
 			if (game->map.map[y][x] == '1')
 				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,

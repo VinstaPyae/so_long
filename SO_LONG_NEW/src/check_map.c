@@ -16,7 +16,7 @@ int	is_rectangular(t_game *game)
 	i = 0;
 	while (game->map.map[i])
 	{
-		if (ft_strlen(game->map.map[i]) != (size_t)game->map.width)
+		if (ft_strlen(game->map.map[i]) != (size_t)(game->map.width - 1))
 			return (0);
 		i++;
 	}
@@ -61,7 +61,7 @@ void	is_surrounded_wall(t_game *game)
 		while (x++ < (game->map.width - 1))
 			if (game->map.map[0][x - 1] != '1')
 				error_exit(game, "Map is not surrounded by wall!!\n");
-		if (game->map.map[y][0] != '1' || game->map.map[y][x - 1] != '1')
+		if (game->map.map[y][0] != '1' || game->map.map[y][x - 2] != '1')
 			error_exit(game, "Map is not surrounded by wall!!\n");
 		y++;
 	}

@@ -31,10 +31,11 @@ void	get_wnh(t_game *game)
 	int	i;
 
 	i = 0;
-	game->map.width = ft_strlen(game->map.map[i]);
+	game->map.width = (ft_strlen(game->map.map[i]) + 1);
 	while (game->map.map[i])
 		i++;
 	game->map.height = i;
+	printf("width: %d", game->map.width);
 }
 
 void	get_elements(t_game *game)
