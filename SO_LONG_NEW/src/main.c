@@ -6,6 +6,7 @@ int	main(int argc, char **argv)
 
 	if (argc == 2)
 	{
+		init_tiles(&game);
 		init_map(&game);
 		init_checker(&game);
 		put_map(argv[1], &game);
@@ -15,5 +16,5 @@ int	main(int argc, char **argv)
 		key_hook(&game);
 	}
 	else
-		error_exit(&game, "Map not found!!\n");
+		error_exit(NULL, "Map not found!!\n");
 }

@@ -70,5 +70,6 @@ void	render_map(t_game *game);
 void	update_player_pos(t_game *game, bool horizontal, int length);
 int	quit_game(t_game *game);
 void	render_player_tiles(t_game *game);
+void	init_tiles(t_game *game);
 
 #endif

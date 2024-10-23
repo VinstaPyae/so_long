@@ -68,22 +68,10 @@ void	get_elements(t_game *game)
 
 void	put_map(char *mp_file, t_game *game)
 {
-	int	i;
-
-	i = 0;
 	if (!file_validation(mp_file))
 		error_exit(game, "Invalid Map File!\n");
 	put_map_data(mp_file, game);
 	get_wnh(game);
 	get_elements(game);
 	check_map(game);
-	while (game->map.map[i])
-	{
-		printf("%s\n", game->map.map[i++]);
-	}
-	printf("Height: %d\n", game->map.height);
-	printf("Width : %d\n", game->map.width);
-	printf("Collect: %d\n", game->map.collectibles);
-	printf("Exit: %d\n", game->map.exit);
-	printf("Player: %d\n", game->map.player);
 }

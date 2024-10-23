@@ -20,7 +20,7 @@ void	if_touchable_tiles(t_game *game)
 		game->map.collectibles -= 1;
 		return ;
 	}
-	if (game->map.map[x][y] == 'E'
+	if (game->map.map[y][x] == 'E'
 		&& game->map.collectibles == 0)
 	{
 		ft_printf("You Win!! Get out now!\n");
@@ -29,20 +29,9 @@ void	if_touchable_tiles(t_game *game)
 }
 void	update_map(t_game *game)
 {
-	if (game->map.collectibles == 0)
-	{
-		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->tiles.exit,
-			TILE_SIZE * game->map.exit_pos.y, TILE_SIZE * game->map.exit_pos.x);
-		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->tiles.floor,
-			TILE_SIZE * game->map.player_pos.x, TILE_SIZE
-			* game->map.player_pos.y);
-	}
-	else
-	{
-		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->tiles.floor,
-			TILE_SIZE * game->map.player_pos.x, TILE_SIZE
-			* game->map.player_pos.y);
-	}
+	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->tiles.floor,
+		TILE_SIZE * game->map.player_pos.x, TILE_SIZE
+		* game->map.player_pos.y);
 }
 
 void	update_player_pos(t_game *game, bool horizontal, int length)
